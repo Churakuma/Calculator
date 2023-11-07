@@ -25,6 +25,15 @@ class CalculatorViewModel: ViewModel() {
         )
     }
 
+    fun clear() {
+        canAddDecimal = false
+        canAddOperation = false
+
+        state = state.copy(
+            input = ""
+        )
+    }
+
     fun backspace(input: String): String {
         if (input.isNotEmpty()) {
             state = state.copy(

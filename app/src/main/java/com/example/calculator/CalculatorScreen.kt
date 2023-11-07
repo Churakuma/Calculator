@@ -10,16 +10,21 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.calculator.ui.theme.CalculatorTheme
+import com.example.calculator.ui.theme.Pink80
+import com.example.calculator.ui.theme.Purple40
+import com.example.calculator.ui.theme.PurpleGrey40
+import com.example.calculator.ui.theme.PurpleGrey80
+
 
 @Composable
 fun CalculatorScreen(
@@ -30,22 +35,23 @@ fun CalculatorScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(color = PurpleGrey80)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(64.dp),
             verticalAlignment = Alignment.Bottom,
-            horizontalArrangement = Arrangement.End
+            horizontalArrangement = Arrangement.Center
         ) {
             Text(
                 modifier = Modifier,
-                color = Color.White,
+                color = Purple40,
                 text = state.display,
                 style = MaterialTheme.typography.displayMedium
             )
         }
+        Spacer(modifier = Modifier.size(36.dp))
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -55,16 +61,17 @@ fun CalculatorScreen(
         ) {
             Text(
                 modifier = Modifier,
-                color = Color.White,
+                color = Purple40,
                 text = state.input,
-                style = MaterialTheme.typography.displayMedium
+                style = MaterialTheme.typography.displaySmall
             )
         }
         Spacer(modifier = Modifier.size(52.dp))
 
         Column(
             modifier = Modifier
-                .fillMaxHeight(),
+                .fillMaxHeight()
+                .background(color = PurpleGrey40),
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
             Row(
@@ -75,22 +82,34 @@ fun CalculatorScreen(
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                OutlinedButton(
+                Button(
                     modifier = Modifier,
+                    colors = ButtonDefaults.buttonColors(containerColor = Purple40),
                     onClick = { viewModel.allClear() }
                 ) {
                     Text(
                         text = "AC",
-                        color = Color.Green
+                        color = Pink80
                     )
                 }
-                OutlinedButton(
+                Button(
                     modifier = Modifier,
+                    colors = ButtonDefaults.buttonColors(containerColor = Purple40),
+                    onClick = { viewModel.clear() }
+                ) {
+                    Text(
+                        text = "C",
+                        color = Pink80
+                    )
+                }
+                Button(
+                    modifier = Modifier,
+                    colors = ButtonDefaults.buttonColors(containerColor = Purple40),
                     onClick = { viewModel.backspace(state.input) }
                 ) {
                     Text(
                         text = "<-",
-                        color = Color.Green
+                        color = Pink80
                     )
                 }
                 CalculatorOperatorButton(buttonText = "/", viewModel)
@@ -152,52 +171,56 @@ fun CalculatorScreen(
 
 @Composable
 fun CalculatorNumericButton(buttonText: String, viewModel: CalculatorViewModel) {
-    OutlinedButton(
+    Button(
         modifier = Modifier,
+        colors = ButtonDefaults.buttonColors(containerColor = Purple40),
         onClick = { viewModel.onNumericPressed(buttonText) }
     ) {
         Text(
             text = buttonText,
-            color = Color.Green
+            color = Pink80
         )
     }
 }
 
 @Composable
 fun CalculatorDecimalButton(buttonText: String, viewModel: CalculatorViewModel) {
-    OutlinedButton(
+    Button(
         modifier = Modifier,
+        colors = ButtonDefaults.buttonColors(containerColor = Purple40),
         onClick = { viewModel.onDecimalPressed(buttonText) }
     ) {
         Text(
             text = buttonText,
-            color = Color.Green
+            color = Pink80
         )
     }
 }
 
 @Composable
 fun CalculatorOperatorButton(buttonText: String, viewModel: CalculatorViewModel) {
-    OutlinedButton(
+    Button(
         modifier = Modifier,
+        colors = ButtonDefaults.buttonColors(containerColor = Purple40),
         onClick = { viewModel.onOperationPressed(buttonText) }
     ) {
         Text(
             text = buttonText,
-            color = Color.Green
+            color = Pink80
         )
     }
 }
 
 @Composable
 fun CalculatorEqualButton(buttonText: String, viewModel: CalculatorViewModel) {
-    OutlinedButton(
+    Button(
         modifier = Modifier,
+        colors = ButtonDefaults.buttonColors(containerColor = Purple40),
         onClick = { viewModel.calculateResults() }
     ) {
         Text(
             text = buttonText,
-            color = Color.Green
+            color = Pink80
         )
     }
 }
