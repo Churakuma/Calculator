@@ -20,10 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.calculator.ui.theme.CalculatorTheme
-import com.example.calculator.ui.theme.Pink80
-import com.example.calculator.ui.theme.Purple40
-import com.example.calculator.ui.theme.PurpleGrey40
-import com.example.calculator.ui.theme.PurpleGrey80
+import com.example.calculator.ui.theme.Cyan
+import com.example.calculator.ui.theme.DarkGray
+import com.example.calculator.ui.theme.LighterBlack
 
 
 @Composable
@@ -35,7 +34,7 @@ fun CalculatorScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = PurpleGrey80)
+            .background(color = DarkGray)
     ) {
         Row(
             modifier = Modifier
@@ -46,7 +45,7 @@ fun CalculatorScreen(
         ) {
             Text(
                 modifier = Modifier,
-                color = Purple40,
+                color = Cyan,
                 text = state.display,
                 style = MaterialTheme.typography.displayMedium
             )
@@ -61,7 +60,7 @@ fun CalculatorScreen(
         ) {
             Text(
                 modifier = Modifier,
-                color = Purple40,
+                color = Cyan,
                 text = state.input,
                 style = MaterialTheme.typography.displaySmall
             )
@@ -71,7 +70,7 @@ fun CalculatorScreen(
         Column(
             modifier = Modifier
                 .fillMaxHeight()
-                .background(color = PurpleGrey40),
+                .background(color = LighterBlack),
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
             Row(
@@ -84,32 +83,32 @@ fun CalculatorScreen(
             ) {
                 Button(
                     modifier = Modifier,
-                    colors = ButtonDefaults.buttonColors(containerColor = Purple40),
+                    colors = ButtonDefaults.buttonColors(containerColor = Cyan),
                     onClick = { viewModel.allClear() }
                 ) {
                     Text(
                         text = "AC",
-                        color = Pink80
+                        color = DarkGray
                     )
                 }
                 Button(
                     modifier = Modifier,
-                    colors = ButtonDefaults.buttonColors(containerColor = Purple40),
+                    colors = ButtonDefaults.buttonColors(containerColor = Cyan),
                     onClick = { viewModel.clear() }
                 ) {
                     Text(
                         text = "C",
-                        color = Pink80
+                        color = DarkGray
                     )
                 }
                 Button(
                     modifier = Modifier,
-                    colors = ButtonDefaults.buttonColors(containerColor = Purple40),
+                    colors = ButtonDefaults.buttonColors(containerColor = Cyan),
                     onClick = { viewModel.backspace(state.input) }
                 ) {
                     Text(
                         text = "<-",
-                        color = Pink80
+                        color = DarkGray
                     )
                 }
                 CalculatorOperatorButton(buttonText = "/", viewModel)
@@ -173,12 +172,12 @@ fun CalculatorScreen(
 fun CalculatorNumericButton(buttonText: String, viewModel: CalculatorViewModel) {
     Button(
         modifier = Modifier,
-        colors = ButtonDefaults.buttonColors(containerColor = Purple40),
+        colors = ButtonDefaults.buttonColors(containerColor = Cyan),
         onClick = { viewModel.onNumericPressed(buttonText) }
     ) {
         Text(
             text = buttonText,
-            color = Pink80
+            color = DarkGray
         )
     }
 }
@@ -187,12 +186,12 @@ fun CalculatorNumericButton(buttonText: String, viewModel: CalculatorViewModel) 
 fun CalculatorDecimalButton(buttonText: String, viewModel: CalculatorViewModel) {
     Button(
         modifier = Modifier,
-        colors = ButtonDefaults.buttonColors(containerColor = Purple40),
+        colors = ButtonDefaults.buttonColors(containerColor = Cyan),
         onClick = { viewModel.onDecimalPressed(buttonText) }
     ) {
         Text(
             text = buttonText,
-            color = Pink80
+            color = DarkGray
         )
     }
 }
@@ -201,12 +200,12 @@ fun CalculatorDecimalButton(buttonText: String, viewModel: CalculatorViewModel) 
 fun CalculatorOperatorButton(buttonText: String, viewModel: CalculatorViewModel) {
     Button(
         modifier = Modifier,
-        colors = ButtonDefaults.buttonColors(containerColor = Purple40),
+        colors = ButtonDefaults.buttonColors(containerColor = Cyan),
         onClick = { viewModel.onOperationPressed(buttonText) }
     ) {
         Text(
             text = buttonText,
-            color = Pink80
+            color = DarkGray
         )
     }
 }
@@ -215,12 +214,12 @@ fun CalculatorOperatorButton(buttonText: String, viewModel: CalculatorViewModel)
 fun CalculatorEqualButton(buttonText: String, viewModel: CalculatorViewModel) {
     Button(
         modifier = Modifier,
-        colors = ButtonDefaults.buttonColors(containerColor = Purple40),
+        colors = ButtonDefaults.buttonColors(containerColor = Cyan),
         onClick = { viewModel.calculateResults() }
     ) {
         Text(
             text = buttonText,
-            color = Pink80
+            color = DarkGray
         )
     }
 }
