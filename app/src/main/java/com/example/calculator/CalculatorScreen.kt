@@ -42,7 +42,7 @@ fun CalculatorScreen(
                 .fillMaxWidth()
                 .height(64.dp),
             verticalAlignment = Alignment.Bottom,
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.End
         ) {
             Text(
                 modifier = Modifier,
